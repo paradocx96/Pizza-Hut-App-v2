@@ -1,6 +1,20 @@
-# pizza_hut_app
+# Pizza Hut - Sri Lanka
 
-Pizza Hut - Sri Lanka - Android App
+## Team Members  
+
+| Student ID | Student Name            | Github Username       |
+|------------|-------------------------|-----------------------|
+| IT19014128 | A.M.W.W.R.L. Wataketiya | RavinduLa             |
+| IT19180526 | S.A.N.L.D. Chandrasiri  | paradocx96            |
+| IT19240848 | H.G. Malwatta           | DeclanChirush         |  
+
+## Member Functions  
+
+| Student ID | Student Name            | Functions                                 |
+|------------|-------------------------|-------------------------------------------|
+| IT19014128 | A.M.W.W.R.L. Wataketiya | Pizza                                     |
+| IT19180526 | S.A.N.L.D. Chandrasiri  | Appetizers and Others, Promos, Contact us |
+| IT19240848 | H.G. Malwatta           | User Login & Signup, User Profile         |  
 
 ## Getting Started
 
