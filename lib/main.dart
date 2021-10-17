@@ -1,43 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:pizzahut/modules/Cart/models/CartModel.dart';
+import 'package:pizzahut/modules/Cart/screens/Cart.dart';
+import 'package:pizzahut/modules/FoodMenu/screens/FoodMenu.dart';
+import 'package:pizzahut/modules/Pizza/screens/PizzaSingleView.dart';
+import 'package:pizzahut/modules/Search/screens/SearchPage.dart';
+import 'package:pizzahut/modules/homepage/screens/TempGetStarted.dart';
+import 'package:pizzahut/modules/homepage/screens/edit_profile/edit_profile.dart';
+import 'package:pizzahut/modules/homepage/screens/view_profile/view_profile.dart';
+import 'package:pizzahut/widgets/BottomNavBar.dart';
+import 'package:pizzahut/widgets/PHAppBar.dart';
+import 'package:pizzahut/widgets/BottomNavBar2.dart';
+import 'package:pizzahut/modules/MainMenu/screens/MainMenu.dart';
+import 'package:pizzahut/modules/Landing/screens/LandingPage.dart';
+import 'package:pizzahut/modules/homepage/screens/Example.dart';
+import 'package:provider/provider.dart';
+import 'package:pizzahut/modules/contact/screens/contact.dart';
+
+//import 'package:pizzahut/modules/homepage/screens/gets_started/gets_started_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/splash/splash_screen.dart';
+import 'package:pizzahut/modules/homepage/screens/trace_order/view_trace_orders.dart';
+import 'modules/homepage/models/authentication.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => CartModel()),
+    ChangeNotifierProvider.value(
+      value: Authentication(),
+    ),
+  ], child: MyApp()));
 }
+
+const accentColor = Color(0xffEE3A43);
+const secondaryColor = Color(0xffF1F1F1);
+const canvasColor = Color(0xFFF4EFEF);
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
+    bool isLoggedIn = true;
+
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Pizza Hut RHN',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+        primaryColor: Colors.white,
         primarySwatch: Colors.blue,
+        accentColor: accentColor,
+        canvasColor: canvasColor
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: isLoggedIn ? SplashScreen() : HomePage(),
+      routes: {
+        FoodMenu.routeName: (context) => const FoodMenu(),
+        LandingPage.routeName: (context) => const LandingPage(),
+        PizzaSingleView.routeName: (context) => const PizzaSingleView(),
+        Cart.routeName: (context) => const Cart(),
+        SearchPage.routeName: (context) => const SearchPage(),
+        Contact.routeName: (context) => const Contact(),
+        ViewProfile.routeName: (context) =>  ViewProfile(),
+        EditProfile.routeName: (context) => EditProfile()
+      },
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -47,6 +76,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int currentIndex = 0;
+
+  final screens = [
+    Center(
+      child: Text("Home"),
+    ),
+    MainMenu(),
+    Center(
+      child: Text("Track Order"),
+    ),
+    Center(
+      child: Text("Profile"),
+    ),
+  ];
 
   void _incrementCounter() {
     setState(() {
@@ -61,53 +104,68 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    return Scaffold();
+
+    /*Widget pizzaHutLogo_image = Container(
+      height: 50,
+      child: Image.asset("images/pizza_hut_logo.png"),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        title: pizzaHutLogo_image,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before_sharp),
+          onPressed: (){},
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delivery_dining),
+            onPressed: (){},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: (){},
+          ),
+        ],
       ),
+      body: screens[currentIndex],
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        child: Icon(Icons.search),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Theme.of(context).accentColor,
+          backgroundColor: Theme.of(context).primaryColor,
+          type: BottomNavigationBarType.fixed,
+          iconSize: 40,
+          selectedFontSize: 15,
+          currentIndex: currentIndex,
+          onTap: (index) => setState(() => currentIndex = index) ,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_filled, color: Colors.black,),
+              label: 'Home',
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.menu_book, color: Colors.black,),
+              label: 'Menu',
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.delivery_dining, color: Colors.black,),
+              label: 'Order Tracking',
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.menu, color: Colors.black,),
+              label: 'More',
+              backgroundColor: Theme.of(context).primaryColor,
+            )
+          ])
+    );*/
   }
 }

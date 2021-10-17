@@ -1,5 +1,5 @@
-name: pizza_hut_app
-description: Pizza Hut - Sri Lanka - Android App
+name: pizzahut
+description: Pizza Hut Flutter project for UEE.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -23,15 +23,32 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  #http: ^0.13.3
+  #provider: ^6.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  cloud_firestore: ^2.5.3
+  provider: ^6.0.0
+  http: ^0.13.3
+  #http: ^0.12.0+4
+  flutter_svg: ^0.19.1
+  page_transition: ^2.0.4
+  flutter_signin_button: ^2.0.0
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  flutter_launcher_icons: "^0.8.1"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -45,9 +62,69 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/home/PizzaHutLogoHome.png
+    - assets/images/home/Image1.jpg
+    - assets/images/home/Image2.jpg
+    - assets/images/home/Image3.jpg
+    - assets/images/home/Image7.jpg
+    - assets/images/appetizers/appetizerImage1.jpg
+    - assets/images/appetizers/appetizerImage2.jpg
+    - assets/images/appetizers/appetizerImage3.jpg
+    - assets/images/appetizers/appetizerImage4.jpg
+    - assets/images/appetizers/appetizerImage5.jpg
+    - assets/images/appetizers/appetizerImage6.jpg
+    - assets/images/appetizers/appetizerImage7.jpg
+    - assets/images/appetizers/appetizerImage8.jpg
+    - assets/images/appetizers/appetizerImage9.jpg
+    - assets/images/appetizers/appetizerImage10.jpg
+    - assets/images/beverages/Image1.jpg
+    - assets/images/beverages/Image2.jpg
+    - assets/images/beverages/Image3.jpg
+    - assets/images/beverages/Image4.jpg
+    - assets/images/beverages/Image5.jpg
+    - assets/images/beverages/Image6.jpg
+    - assets/images/beverages/Image7.jpg
+    - assets/images/beverages/Image8.jpg
+    - assets/images/beverages/Image9.jpg
+    - assets/images/beverages/Image10.jpg
+    - assets/images/beverages/Image11.jpg
+    - assets/images/beverages/Image12.jpg
+    - assets/images/desserts/Image1.jpg
+    - assets/images/desserts/Image2.jpg
+    - assets/images/desserts/Image3.jpg
+    - assets/images/pastas/Image1.jpg
+    - assets/images/pastas/Image2.jpg
+    - assets/images/pastas/Image3.jpg
+    - assets/images/pastas/Image4.jpg
+    - assets/images/promos/Image1.jpg
+    - assets/images/promos/Image2.jpg
+    - assets/images/promos/Image3.jpg
+    - assets/images/promos/Image4.jpg
+    - assets/images/promos/Image5.jpg
+    - assets/images/promos/Image6.jpg
+    - assets/images/promos/Image7.jpg
+    - assets/images/promos/Image8.jpg
+    - assets/images/atc/atc_background.png
+    - images/pizza_hut_logo.png
+    - images/pizza_hut_logo2.png
+    - images/pizza_main.jpg
+    - images/pasta_main.jpg
+    - images/cheesy_garlic_bread_main.jpg
+    - images/lava_cake_main.jpg
+    - images/chocolate_milkshake_main.jpg
+    - images/promo_main.jpg
+    - images/pizza/bbq_chicken_pizza.jpg
+    - images/pizza/black_chicken_pizza.jpg
+    - images/pizza/cheese_lovers_pizza.jpg
+    - images/pizza/hotspicy_chicken.jpg
+    - images/vege_pizza.jpg
+    - assets/images/gets_started_page/
+    - assets/images/splash_page/
+    - assets/images/login_page/
+    - assets/images/register_page/
+    - assets/images/view_profile_page/
+    - assets/images/promo_pizza/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

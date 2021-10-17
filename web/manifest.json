@@ -1,11 +1,11 @@
 {
-    "name": "pizza_hut_app",
-    "short_name": "pizza_hut_app",
+    "name": "pizzahut",
+    "short_name": "pizzahut",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Pizza Hut - Sri Lanka - Android App",
+    "description": "Pizza Hut Flutter project for UEE.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

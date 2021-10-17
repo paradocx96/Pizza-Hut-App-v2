@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uee.codewave.pizza_hut_app">
+    package="com.codewave.pizzahut">
    <application
-        android:label="pizza_hut_app"
+        android:label="Pizza Hut RHN"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
