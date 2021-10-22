@@ -1,5 +1,5 @@
-# SE3050 - UEE
-## Group ID : 2021S2_REG_WE_57
+# se3050---uee-2021s2_reg_we_57
+se3050---uee-2021s2_reg_we_57 created by GitHub Classroom
 
 ## Selected Application
 
